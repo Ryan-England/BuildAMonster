@@ -7,9 +7,9 @@ class Monster extends Phaser.Scene {
         this.bodyX = 300;
         this.bodyY = 350;
 
-        this.aKey = null;
-        this.dKey = null;
-        this.speed = 40;
+        this.left = null;
+        this.right = null;
+        this.speed = 3;
         
     }
 
@@ -64,25 +64,46 @@ class Monster extends Phaser.Scene {
             my.sprite.fangs.visible = false;
         });
 
-        this.aKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        this.dKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        this.left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
     update() {
         let my = this.my;    // create an alias to this.my for readability
 
-        if (this.aKey.isDown) {
-            for (part in my.sprite) {
-                my.sprite.part.x - this.speed;
-            } 
-            my.sprite.lArm.visible = false;
+        if (this.left.isDown) {
+            //console.log("A key is down (polling)");
+            my.sprite.body.x -= this.speed;
+            my.sprite.lArm.x -= this.speed;
+            my.sprite.rArm.x -= this.speed;
+            my.sprite.lLeg.x -= this.speed;
+            my.sprite.rLeg.x -= this.speed;
+            my.sprite.lEar.x -= this.speed;
+            my.sprite.rEar.x -= this.speed;
+            my.sprite.anten.x -= this.speed;
+            my.sprite.lEye.x -= this.speed;
+            my.sprite.rEye.x -= this.speed;
+            my.sprite.highLEye.x -= this.speed;
+            my.sprite.highREye.x -= this.speed;
+            my.sprite.mouth.x -= this.speed;
+            my.sprite.fangs.x -= this.speed;
         }
-        if (this.dKey.isDown) {
-            for (part in my.sprite) {
-                my.sprite.part.x + this.speed;
-            }
-            my.sprite.rArm.visible = false;
-            console.log("D key is down (polling)")
+        if (this.right.isDown) {
+            //console.log("D key is down (polling)");
+            my.sprite.body.x += this.speed;
+            my.sprite.lArm.x += this.speed;
+            my.sprite.rArm.x += this.speed;
+            my.sprite.lLeg.x += this.speed;
+            my.sprite.rLeg.x += this.speed;
+            my.sprite.lEar.x += this.speed;
+            my.sprite.rEar.x += this.speed;
+            my.sprite.anten.x += this.speed;
+            my.sprite.lEye.x += this.speed;
+            my.sprite.rEye.x += this.speed;
+            my.sprite.highLEye.x += this.speed;
+            my.sprite.highREye.x += this.speed;
+            my.sprite.mouth.x += this.speed;
+            my.sprite.fangs.x += this.speed;
         }
     }
 
